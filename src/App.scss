@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    html {
+        font-family: Open Sans, system-ui, sans-serif;
+        // font-family: Open Sans, system-ui, sans-serif;
+    }
+}
+svg {
+    max-height: 2rem;
+    width: auto;
+}
