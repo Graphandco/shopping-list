@@ -1,27 +1,26 @@
 import { TiShoppingCart } from "react-icons/ti";
-// import { VscChecklist } from "react-icons/vsc";
-import { VscTasklist } from "react-icons/vsc";
-import { RiPlayListAddFill } from "react-icons/ri";
+import { FaShoppingCart } from "react-icons/fa";
+import { GiShop } from "react-icons/gi";
 import { Link } from "react-router-dom";
 
 const Header = () => {
     return (
-        <header className="py-3 p-2 flex items-center justify-between bg-slate-500">
+        <header className="py-2 px-6 flex items-center justify-between bg-slate-500 text-white">
             <Link to="/">
                 <div className="flex items-center gap-2">
-                    <TiShoppingCart className="text-xl text-white" />
-                    <h1 className="text-lg text-center font-bold text-white">
+                    <TiShoppingCart className="text-xl " />
+                    <h1 className="text-lg text-center font-bold">
                         Shopping List
                     </h1>
                 </div>
             </Link>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-5 text-xl">
                 <Link to="/">
-                    <VscTasklist />
+                    <FaShoppingCart />
                 </Link>
                 <Link to="/list">
-                    <RiPlayListAddFill />
+                    <GiShop />
                 </Link>
             </div>
         </header>

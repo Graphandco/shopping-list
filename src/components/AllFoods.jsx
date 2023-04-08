@@ -1,9 +1,12 @@
+import { useState } from "react";
 import { FoodItems } from "../context/FoodsContext";
 import ShoppingItem from "./ShoppingItem";
 import AddFood from "./AddFood";
+import EditFood from "./EditFood";
 
 const AllFoods = () => {
     const { foods } = FoodItems();
+    const [edit, setEdit] = useState(false);
 
     let foodToBuy = foods.filter(function (food) {
         return food.tobuy === true ? food : "";
@@ -36,6 +39,7 @@ const AllFoods = () => {
                                             key={index}
                                             food={food}
                                             list="all"
+                                            edit={edit}
                                         />
                                     ))}
                             </div>
@@ -56,14 +60,16 @@ const AllFoods = () => {
                                     key={index}
                                     food={food}
                                     list="all"
+                                    edit={edit}
                                 />
                             ))}
                         </div>
                     </div>
                 </>
             )}
-            <div className="p-2 text-center">
+            <div className="p-2 text-center flex justify-center gap-2">
                 <AddFood />
+                <EditFood edit={edit} setEdit={setEdit} />
             </div>
         </div>
     );

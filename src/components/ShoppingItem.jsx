@@ -1,10 +1,12 @@
 // import { MdShoppingCartCheckout } from "react-icons/md";
-// import { BiCartAdd } from "react-icons/bi";
+import { FaTrash } from "react-icons/fa";
+import { FaEdit } from "react-icons/fa";
 import { db } from "../../firebase";
 import { ReactSVG } from "react-svg";
-import { updateDoc, doc } from "firebase/firestore";
-const ShoppingItem = ({ food, actionFood }) => {
-    const { category, name, image, incart, tobuy } = food;
+import { updateDoc, deleteDoc, doc } from "firebase/firestore";
+const ShoppingItem = ({ food, actionFood, edit }) => {
+    const { id, category, name, image, incart, tobuy } = food;
+
     // let bgColor = "red";
     // switch (category) {
     //     case "Fruits & Légumes": {
@@ -29,6 +31,16 @@ const ShoppingItem = ({ food, actionFood }) => {
               });
     };
 
+    const deleteFood = async (id) => {
+        if (
+            window.confirm(
+                `Voulez-vous vraiment supprimer le produit ${name} ?`
+            )
+        ) {
+            await deleteDoc(doc(db, "shopping", id));
+        }
+    };
+
     return (
         <>
             <div
@@ -39,6 +51,16 @@ const ShoppingItem = ({ food, actionFood }) => {
                 }`}
                 onClick={() => updateFood(food.id)}
             >
+                {edit && (
+                    <div className="edit-food absolute inset-0 flex justify-around items-center p-2 bg-slate-800/75 z-10 text-white text-xl">
+                        <div className="edit">
+                            <FaEdit />
+                        </div>
+                        <div className="delete">
+                            <FaTrash onClick={() => deleteFood(id)} />
+                        </div>
+                    </div>
+                )}
                 {/* <img className="h-[2rem]" src={Kiwi} alt="Fruit" /> */}
                 <div className="flex flex-col content-center gap-1 relative z-1">
                     <ReactSVG

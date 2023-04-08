@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { FoodItems } from "../context/FoodsContext";
 import { db } from "../../firebase";
 import { collection, addDoc } from "firebase/firestore";
+import { FaPlus } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 const AddFood = () => {
@@ -32,8 +33,8 @@ const AddFood = () => {
     return (
         <div>
             {/* The button to open modal */}
-            <label htmlFor="my-modal-4" className="btn">
-                Ajouter un produit
+            <label htmlFor="my-modal-4" className="btn btn-primary">
+                <FaPlus />
             </label>
 
             {/* Put this part before </body> tag */}
