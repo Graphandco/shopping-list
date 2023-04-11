@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 const AddFood = () => {
     const { foods } = FoodItems();
     const [name, setName] = useState("");
-    const [category, setCategory] = useState("");
+    const [category, setCategory] = useState("Divers");
     const [image, setImage] = useState("");
 
     const addFood = async (e) => {
@@ -56,13 +56,14 @@ const AddFood = () => {
                             placeholder="Nom du produit"
                             className="input input-bordered w-full max-w-xs"
                             onChange={(e) => setName(e.target.value)}
+                            value={name}
                         />
 
                         <select
                             className="select select-bordered w-full max-w-xs mt-5"
                             onChange={(e) => setCategory(e.target.value)}
+                            value={category}
                         >
-                            <option>Divers</option>
                             {catList &&
                                 catList.map((cat) => (
                                     <option key={cat}>{cat}</option>
@@ -74,6 +75,7 @@ const AddFood = () => {
                             placeholder="Image du produit"
                             className="input input-bordered w-full max-w-xs mt-5"
                             onChange={(e) => setImage(e.target.value)}
+                            value={image}
                         />
                         <div className="p-2 text-center mt-5">
                             <button

@@ -46,7 +46,7 @@ const ShoppingItem = ({ food, actionFood, edit }) => {
             <div
                 //aspect-[1.2/1]
                 //before:content-[''] before:absolute before:inset-0 before:z-0 before:rounded-[15px] ${bgColor} before:opacity-10
-                className={`bg-base-300 rounded-[15px] shadow-xl py-4 px-1 flex flex-col justify-center gap-2 text-center relative  ${
+                className={`bg-base-300 rounded-[15px] shadow-xl py-4 px-1 flex flex-col justify-center gap-2 text-center relative cursor-pointer  ${
                     tobuy === true || (incart === true && "opacity-30")
                 }`}
                 onClick={() => updateFood(food.id)}

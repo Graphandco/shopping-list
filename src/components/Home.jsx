@@ -29,10 +29,10 @@ const Home = () => {
     };
 
     return (
-        <div className="my-10">
-            <div className="foods-not-in-cart">
-                {catList &&
-                    catList.map((cat) => (
+        <>
+            {catList.length && (
+                <div className="foods-not-in-cart mt-20">
+                    {catList.map((cat) => (
                         <div key={cat} className="cat-item">
                             <h2 className="bg-slate-500 p-2 mb-5 text-white font-semibold">
                                 {cat}
@@ -53,7 +53,8 @@ const Home = () => {
                             </div>
                         </div>
                     ))}
-            </div>
+                </div>
+            )}
 
             {foodNotInCart.length > 0 && (
                 <>
@@ -76,7 +77,7 @@ const Home = () => {
                 </>
             )}
             {foodToBuy.length === 0 ? (
-                <div className="flex flex-col items-center gap-8 w-full">
+                <div className="flex flex-col items-center justify-center gap-8 w-full h-[100vh]">
                     <img
                         className="w-[300px] max-w-[100%]"
                         src="empty-cart.png"
@@ -85,7 +86,7 @@ const Home = () => {
                     <h2 className="text-white text-lg">Le panier est vide !</h2>
 
                     <Link to={`/list`}>
-                        <button className="btn btn-primary mt-5">
+                        <button className="btn btn-primary">
                             <span>Ajouter</span>
                         </button>
                     </Link>
@@ -100,7 +101,7 @@ const Home = () => {
                     </button>
                 </div>
             )}
-        </div>
+        </>
     );
 };
 

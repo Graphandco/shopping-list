@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
     return (
-        <header className="py-2 px-6 flex items-center justify-between bg-slate-500 text-white">
+        <header className="fixed top-0 w-full z-10 py-2 px-6 flex items-center justify-between bg-slate-500 text-white">
             <Link to="/">
                 <div className="flex items-center gap-2">
                     <TiShoppingCart className="text-xl " />
