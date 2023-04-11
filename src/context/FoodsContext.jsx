@@ -11,9 +11,9 @@ export const FoodsContextProvider = ({ children }) => {
 
     useEffect(() => {
         const q = query(
-            // collection(db, "shopping"),
             // orderBy("createdAt", "desc")
-            collection(db, "shopping")
+            collection(db, "shopping"),
+            orderBy("name", "asc")
         );
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
             let foodsArr = [];

@@ -20,12 +20,14 @@ const Home = () => {
     const catList = [...new Set(allCatList)];
 
     const removeFoodToBuy = async () => {
-        foodToBuy.forEach((food) => {
-            updateDoc(doc(db, "shopping", food.id), {
-                tobuy: false,
-                incart: false,
+        if (window.confirm(`Voulez-vous vraiment vider la liste ?`)) {
+            foodToBuy.forEach((food) => {
+                updateDoc(doc(db, "shopping", food.id), {
+                    tobuy: false,
+                    incart: false,
+                });
             });
-        });
+        }
     };
 
     return (
