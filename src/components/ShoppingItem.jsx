@@ -4,8 +4,25 @@ import { FaEdit } from "react-icons/fa";
 import { db } from "../../firebase";
 import { ReactSVG } from "react-svg";
 import { updateDoc, deleteDoc, doc } from "firebase/firestore";
+import { UserAuth } from "../context/AuthContext";
 const ShoppingItem = ({ food, actionFood, edit }) => {
-    const { id, category, name, image, incart, tobuy } = food;
+    const { id, name, image, incart, tobuy, tobuyforusers, incartforusers } =
+        food;
+    const { user } = UserAuth();
+
+    const handleUserInCart = async () => {
+        if (incartforusers?.includes(user.uid)) {
+            await updateDoc(doc(db, "shopping", id), {
+                incartforusers: incartforusers.filter(
+                    (item) => item !== user.uid
+                ),
+            });
+        } else {
+            await updateDoc(doc(db, "shopping", id), {
+                incartforusers: [...incartforusers, user.uid],
+            });
+        }
+    };
 
     // let bgColor = "red";
     // switch (category) {
@@ -22,9 +39,7 @@ const ShoppingItem = ({ food, actionFood, edit }) => {
 
     const updateFood = async (id) => {
         actionFood === "incart"
-            ? await updateDoc(doc(db, "shopping", id), {
-                  incart: !food.incart,
-              })
+            ? handleUserInCart()
             : await updateDoc(doc(db, "shopping", id), {
                   tobuy: true,
                   incart: true,
@@ -51,6 +66,9 @@ const ShoppingItem = ({ food, actionFood, edit }) => {
                 }`}
                 onClick={() => updateFood(food.id)}
             >
+                {/* <div onClick={handleUserInCart} className="btn btn-secondary">
+                    Click
+                </div> */}
                 {edit && (
                     <div className="edit-food absolute inset-0 flex justify-around items-center p-2 bg-slate-800/75 z-10 text-white text-xl">
                         <div className="edit">

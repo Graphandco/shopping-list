@@ -2,6 +2,7 @@ import { TiShoppingCart } from "react-icons/ti";
 import { FaShoppingCart } from "react-icons/fa";
 import { GiShop } from "react-icons/gi";
 import { Link } from "react-router-dom";
+import UserMenu from "./UserMenu";
 
 const Header = () => {
     return (
@@ -15,13 +16,20 @@ const Header = () => {
                 </div>
             </Link>
 
-            <div className="flex items-center gap-5 text-xl">
-                <Link to="/">
+            <div className="flex items-center gap-1">
+                <Link
+                    to="/"
+                    className="btn btn-ghost btn-circle avatar text-lg"
+                >
                     <FaShoppingCart />
                 </Link>
-                <Link to="/list">
+                <Link
+                    to="/list"
+                    className="btn btn-ghost btn-circle avatar text-lg"
+                >
                     <GiShop />
                 </Link>
+                <UserMenu />
             </div>
         </header>
     );
