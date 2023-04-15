@@ -17,8 +17,6 @@ const AllFoods = () => {
     let foodNotToBuy = foods.filter(function (food) {
         return food.tobuyforusers?.includes(user?.uid) ? "" : food;
     });
-    let allCatList = foodNotToBuy.map((item) => item.category);
-    const catList = [...new Set(allCatList)];
 
     const normalizeText = (text) => {
         return text
@@ -30,8 +28,13 @@ const AllFoods = () => {
     const filteredfoods = foodNotToBuy.filter((food) => {
         normalizeText(searchText);
         const normalizedFoodName = normalizeText(food.name);
-        return normalizedFoodName.includes(searchText) ? food : "";
+        return normalizedFoodName.includes(searchText.toLowerCase())
+            ? food
+            : "";
     });
+
+    let allCatList = filteredfoods.map((item) => item.category);
+    const catList = [...new Set(allCatList)];
 
     return (
         <div className="mt-20 mb-5">

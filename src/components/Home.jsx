@@ -51,7 +51,7 @@ const Home = () => {
         <>
             {!user && (
                 <div className="flex flex-col items-center justify-center gap-8 w-full h-[100vh]">
-                    <h2 className="text-white text-lg">
+                    <h2 className="text-white text-lg text-center p-2">
                         Connectez-vous pour accéder à votre liste de courses
                     </h2>
                     <button

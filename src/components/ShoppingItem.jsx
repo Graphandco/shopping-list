@@ -35,7 +35,6 @@ const ShoppingItem = ({ food, actionFood, edit }) => {
                 ),
             });
         } else {
-            console.log("ajouté");
             await updateDoc(doc(db, "shopping", id), {
                 tobuyforusers: [...tobuyforusers, user.uid],
                 incartforusers: [...incartforusers, user.uid],
