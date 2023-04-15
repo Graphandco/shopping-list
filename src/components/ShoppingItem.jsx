@@ -11,7 +11,7 @@ const ShoppingItem = ({ food, actionFood, edit }) => {
     const { user } = UserAuth();
 
     const handleUserInCart = async () => {
-        if (incartforusers?.includes(user.uid)) {
+        if (incartforusers?.includes(user?.uid)) {
             await updateDoc(doc(db, "shopping", id), {
                 incartforusers: incartforusers.filter(
                     (item) => item !== user.uid
@@ -19,6 +19,25 @@ const ShoppingItem = ({ food, actionFood, edit }) => {
             });
         } else {
             await updateDoc(doc(db, "shopping", id), {
+                incartforusers: [...incartforusers, user?.uid],
+            });
+        }
+    };
+
+    const handleUserToBuy = async () => {
+        if (tobuyforusers?.includes(user.uid)) {
+            await updateDoc(doc(db, "shopping", id), {
+                tobuyforusers: tobuyforusers.filter(
+                    (item) => item !== user.uid
+                ),
+                incartforusers: incartforusers.filter(
+                    (item) => item !== user.uid
+                ),
+            });
+        } else {
+            console.log("ajouté");
+            await updateDoc(doc(db, "shopping", id), {
+                tobuyforusers: [...tobuyforusers, user.uid],
                 incartforusers: [...incartforusers, user.uid],
             });
         }
@@ -37,13 +56,8 @@ const ShoppingItem = ({ food, actionFood, edit }) => {
     //         break;
     // }
 
-    const updateFood = async (id) => {
-        actionFood === "incart"
-            ? handleUserInCart()
-            : await updateDoc(doc(db, "shopping", id), {
-                  tobuy: true,
-                  incart: true,
-              });
+    const updateFood = async () => {
+        actionFood === "incart" ? handleUserInCart() : handleUserToBuy();
     };
 
     const deleteFood = async (id) => {

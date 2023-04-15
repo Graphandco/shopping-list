@@ -52,25 +52,6 @@ const UserMenu = () => {
                                 {user?.displayName}
                             </span>
                         </li>
-                        {/* <li>
-                            <Link to="account">Voir mon compte</Link>
-                        </li>
-                        <li>
-                            <Link to="my-tips">Voir mes tips</Link>
-                        </li>
-                        <li>
-                            <Link to="contributions">Contributions</Link>
-                        </li>
-                        {isAdmin && (
-                            <>
-                                <li>
-                                    <Link to="a-valider">Tips à valider</Link>
-                                </li>
-                                <li>
-                                    <Link to="all-tips">Tous les tips</Link>
-                                </li>
-                            </>
-                        )} */}
                         <li>
                             <span className="opacity-50" onClick={handleLogout}>
                                 Se déconnecter

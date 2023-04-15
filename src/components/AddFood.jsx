@@ -17,8 +17,8 @@ const AddFood = () => {
             name,
             category,
             image,
-            incart: false,
-            tobuy: false,
+            incartforusers: [],
+            tobuyforusers: [],
         });
         setName("");
         setCategory("");
