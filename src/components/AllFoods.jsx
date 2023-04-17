@@ -32,14 +32,23 @@ const AllFoods = () => {
             ? food
             : "";
     });
+    filteredfoods.sort(function (a, b) {
+        if (a.name < b.name) {
+            return -1;
+        }
+        if (a.name > b.name) {
+            return 1;
+        }
+        return 0;
+    });
 
     let allCatList = filteredfoods.map((item) => item.category);
-    const catList = [...new Set(allCatList)];
+    const catList = [...new Set(allCatList)].sort();
 
     return (
-        <div className="mt-20 mb-5">
-            <div className="flex justify-between items-center p-2 mb-5">
-                <h1 className="text-center text-white text-lg uppercase font-semibold">
+        <div>
+            <div className="flex flex-wrap gap-2 justify-between items-center px-2 py-10 bg-[url('/inventaire.jpg')] bg-cover bg-center bg-fixed">
+                <h1 className="text-center text-white text-xl font-title">
                     Inventaire des produits
                 </h1>
                 <input
@@ -54,7 +63,7 @@ const AllFoods = () => {
                 {catList &&
                     catList.map((cat) => (
                         <div key={cat} className="cat-item">
-                            <h2 className="bg-slate-500 p-2 mb-5 text-white font-semibold">
+                            <h2 className="bg-slate-300 text-base-300 p-2 mb-5 font-title">
                                 {cat}
                             </h2>
                             <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2 mx-2 mb-5">
