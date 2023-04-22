@@ -86,8 +86,8 @@ const AllFoods = () => {
 
             {foodToBuy.length > 0 && (
                 <>
-                    <div className="food-in-cart">
-                        <h2 className="bg-slate-700 p-2 mb-5 text-white font-semibold">
+                    <div className="food-in-cart opacity-50">
+                        <h2 className="bg-slate-300 text-base-300 p-2 mb-5 font-title">
                             Déjà dans la liste
                         </h2>
 
